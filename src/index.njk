@@ -9,11 +9,9 @@
 <body>
   <h1>hello :)</h1>
   <ul>
-    
-      <li><a href="/poems/poem/">A Poem</a></li>
-    
-      <li><a href="/poems/poem2/">Another Poem</a></li>
-    
+    {% for poem in collections.poems %}
+      <li><a href="{{ poem.url }}">{{ poem.data.title }}</a></li>
+    {% endfor %}
   </ul>
 </body>
 </html>
