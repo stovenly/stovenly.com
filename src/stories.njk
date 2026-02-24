@@ -6,6 +6,6 @@ permalink: /stories/
 <h1>Stories</h1>
 <ul class="listing-list">
   {% for story in collections.stories %}
-    <li><a href="{{ story.url }}">{{ story.data.title }}</a></li>
+    <li><a href="{{ story.url }}">{{ story.data.title }}</a><span class="subtext">{{ story.data.wordcount }} words</span></li>
   {% endfor %}
 </ul>

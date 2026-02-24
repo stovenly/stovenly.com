@@ -2,6 +2,8 @@
 title: Sullen Suns
 layout: story.njk
 permalink: "/stories/{{ page.fileSlug }}/"
+wordcount: 200
+order: 40
 ---
 
 The walls were perfect portraits of moving oceans. The ceiling rose up, fading far into foggy nothingness. The floor was swept marble with streaks of swirling darkness, passing one another and bundling up in layers below.

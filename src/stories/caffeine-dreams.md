@@ -2,6 +2,8 @@
 title: Caffeine Dreams
 layout: story.njk
 permalink: "/stories/{{ page.fileSlug }}/"
+wordcount: 1481
+order: 60
 ---
 
 "I got you some coffee, James."

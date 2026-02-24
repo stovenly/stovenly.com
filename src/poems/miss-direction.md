@@ -2,6 +2,7 @@
 title: Miss Direction
 layout: poem.njk
 permalink: "/poems/{{ page.fileSlug }}/"
+order: 70
 ---
 
 drizzle heavy eyelids

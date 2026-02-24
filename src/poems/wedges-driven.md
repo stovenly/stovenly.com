@@ -2,6 +2,7 @@
 title: Wedges Driven
 layout: poem.njk
 permalink: "/poems/{{ page.fileSlug }}/"
+order: 50
 ---
 
 twenty hours on a rolling road

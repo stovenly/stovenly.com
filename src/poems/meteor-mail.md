@@ -2,6 +2,7 @@
 title: Meteor Mail (1)
 layout: poem.njk
 permalink: "/poems/{{ page.fileSlug }}/"
+order: 90
 ---
 
 emergency transmission received from: outpost[bingo]

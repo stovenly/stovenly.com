@@ -2,6 +2,8 @@
 title: Rooms
 layout: story.njk
 permalink: "/stories/{{ page.fileSlug }}/"
+wordcount: 1191
+order: 30
 ---
 
 This was the place of doors: a long hallway, stretching far to either side. Fluorescent lights left a dull humming as they hung from the ceilings. Doors of every color lined the walls, of every make, of every age, of murals and memories and lives gone by. Some of them had holes or pockmarks, and some were smoothed over like a once-upon accident, only noticeable by the gap in the pattern. Nearby was one in particular, broken and twisted around its hinges, where soft flickering light spilled out.

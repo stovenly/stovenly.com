@@ -2,6 +2,8 @@
 title: Arica
 layout: story.njk
 permalink: "/stories/{{ page.fileSlug }}/"
+wordcount: 537
+order: 20
 ---
 
 Arica, the port city. Shards of glass lined the beach up to a children's playground, where the sun was setting through graffiti-caked pillars and neon trellises. Kids were the kings of their fleeting plastic innocence, even if their parents put out cigarettes on their foreheads and forgot to come home most nights. Smoke-puffing barges dipped off the edge of the world, sinking with the sun and sucking down all the clouds. Coffee-break cranes and skeletal skyscrapers were frozen, poking up back in the east, an army of them about to creep up on the Pacific, to wade out and sink away.

@@ -2,6 +2,7 @@
 title: Heart's Home
 layout: poem.njk
 permalink: "/poems/{{ page.fileSlug }}/"
+order: 10
 ---
 
 Whales slid across the sky.

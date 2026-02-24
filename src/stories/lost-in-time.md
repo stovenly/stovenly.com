@@ -2,6 +2,8 @@
 title: Lost In Time
 layout: story.njk
 permalink: "/stories/{{ page.fileSlug }}/"
+wordcount: 1019
+order: 90
 ---
 
 "Another one? Sure you don't just want to call it a day?"

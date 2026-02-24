@@ -2,6 +2,7 @@
 title: Lunar Soil
 layout: poem.njk
 permalink: "/poems/{{ page.fileSlug }}/"
+order: 30
 ---
 
 dust on shelves in an old back room
