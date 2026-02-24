@@ -142,3 +142,7 @@ article .subtext {
   font-size: 0.95rem;
   margin-bottom: 1.5rem;
 }
+
+article.story p {
+  text-indent: 1.5em;
+}
