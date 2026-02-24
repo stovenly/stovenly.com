@@ -3,6 +3,7 @@ title: In A Forlorn Moor
 layout: poem.njk
 permalink: "/poems/{{ page.fileSlug }}/"
 order: 150
+year: 2016
 ---
 
 plans the moment I rush in &

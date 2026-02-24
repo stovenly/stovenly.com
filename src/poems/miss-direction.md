@@ -3,6 +3,7 @@ title: Miss Direction
 layout: poem.njk
 permalink: "/poems/{{ page.fileSlug }}/"
 order: 70
+year: 2016
 ---
 
 drizzle heavy eyelids

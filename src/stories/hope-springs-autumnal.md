@@ -4,6 +4,7 @@ layout: story.njk
 permalink: "/stories/{{ page.fileSlug }}/"
 wordcount: 1940
 order: 50
+year: 2014
 ---
 
 "Coming to you live from the city of angels in the Golden State, you're listening to KCQ FM. I'm your lovable host, James Frizzo, and it's time for our break-ups contest. We've got one broken heart on the line, ready to give us his story for the chance to win *five hundred dollars!*"

@@ -3,6 +3,7 @@ title: Footprints In Ash
 layout: poem.njk
 permalink: "/poems/{{ page.fileSlug }}/"
 order: 130
+year: 2016
 ---
 
 a great dragon wing

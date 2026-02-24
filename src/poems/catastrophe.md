@@ -3,6 +3,7 @@ title: Catastrophe
 layout: poem.njk
 permalink: "/poems/{{ page.fileSlug }}/"
 order: 160
+year: 2016
 ---
 
 SYLVESTER soars. he is lord

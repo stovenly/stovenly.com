@@ -3,6 +3,7 @@ title: Pulling Accord
 layout: poem.njk
 permalink: "/poems/{{ page.fileSlug }}/"
 order: 120
+year: 2016
 ---
 
 stars lined the tarp

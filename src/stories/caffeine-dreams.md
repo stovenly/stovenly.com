@@ -4,6 +4,7 @@ layout: story.njk
 permalink: "/stories/{{ page.fileSlug }}/"
 wordcount: 1481
 order: 60
+year: 2015
 ---
 
 "I got you some coffee, James."
