@@ -15,6 +15,10 @@ module.exports = function(eleventyConfig) {
         return collectionApi.getFilteredByGlob("src/poems/*.md");
     });
 
+    eleventyConfig.addCollection("stories", function(collectionApi) {
+        return collectionApi.getFilteredByGlob("src/stories/*.md");
+    });
+
     return {
       dir: {
         input: "src",

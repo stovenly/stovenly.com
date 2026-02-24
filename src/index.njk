@@ -1,17 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="icon" type="image/x-icon" href="/favicon.ico">
-  <title>stovenly</title>
-</head>
-<body>
-  <h1>hello :)</h1>
-  <ul>
-    {% for poem in collections.poems %}
-      <li><a href="{{ poem.url }}">{{ poem.data.title }}</a></li>
-    {% endfor %}
-  </ul>
-</body>
-</html>
+---
+layout: base.njk
+---
+<p class="quote">"I let out my voice, lest one be chosen for me"</p>
+
+<h2>Recent Poems</h2>
+<ul class="listing-list">
+  {% for poem in collections.poems | reverse %}
+    {% if loop.index <= 5 %}
+    <li><a href="{{ poem.url }}">{{ poem.data.title }}</a></li>
+    {% endif %}
+  {% endfor %}
+</ul>
+
+<h2>Recent Stories</h2>
+<ul class="listing-list">
+  {% for story in collections.stories | reverse %}
+    {% if loop.index <= 5 %}
+    <li><a href="{{ story.url }}">{{ story.data.title }}</a></li>
+    {% endif %}
+  {% endfor %}
+</ul>

@@ -1,0 +1,11 @@
+---
+title: Stories
+layout: base.njk
+permalink: /stories/
+---
+<h1>Stories</h1>
+<ul class="listing-list">
+  {% for story in collections.stories %}
+    <li><a href="{{ story.url }}">{{ story.data.title }}</a></li>
+  {% endfor %}
+</ul>
