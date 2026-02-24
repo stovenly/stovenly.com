@@ -3,6 +3,7 @@ title: Silence By The Horns
 layout: poem.njk
 permalink: "/poems/{{ page.fileSlug }}/"
 order: 80
+year: 2016
 ---
 
 The horns and streamers of a new king

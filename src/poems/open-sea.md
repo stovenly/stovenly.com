@@ -3,6 +3,7 @@ title: Open Sea
 layout: poem.njk
 permalink: "/poems/{{ page.fileSlug }}/"
 order: 110
+year: 2016
 ---
 
 I sat by the ocean

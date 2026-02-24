@@ -3,6 +3,7 @@ title: At The Stake
 layout: poem.njk
 permalink: "/poems/{{ page.fileSlug }}/"
 order: 40
+year: 2016
 ---
 
 rippling sounds of horns,

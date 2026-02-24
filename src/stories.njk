@@ -3,9 +3,10 @@ title: Stories
 layout: base.njk
 permalink: /stories/
 ---
+{% from "listing-item.njk" import listingItem %}
 <h1>Stories</h1>
 <ul class="listing-list">
-  {% for story in collections.stories %}
-    <li><a href="{{ story.url }}">{{ story.data.title }}</a><span class="subtext">{{ story.data.wordcount }} words</span></li>
+  {% for story in collections.stories | reverse %}
+    {{ listingItem(story.url, story.data.title, story.data.year, story.data.wordcount) }}
   {% endfor %}
 </ul>

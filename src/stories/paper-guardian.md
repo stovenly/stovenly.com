@@ -4,6 +4,7 @@ layout: story.njk
 permalink: "/stories/{{ page.fileSlug }}/"
 wordcount: 1795
 order: 10
+year: 2012
 ---
 
 "Looks like we lost contact with central again - we're crossing the west perimeter."
