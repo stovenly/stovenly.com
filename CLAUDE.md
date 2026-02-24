@@ -19,6 +19,7 @@ src/                        # All source files
     base.njk                #   Main HTML shell (header, nav, footer)
     poem.njk                #   Poem article layout (extends base)
     story.njk               #   Story article layout with word count (extends base)
+    listing-item.njk        #   Reusable macro for listing items (used by index, poems, stories)
   poems/                    # Poem markdown files (17 files)
   stories/                  # Story markdown files (10 files)
   index.njk                 # Homepage
@@ -50,6 +51,7 @@ title: "Poem Title"
 layout: poem.njk
 permalink: "/poems/{{ page.fileSlug }}/"
 order: 10          # Increments of 10 for easy insertion
+year: 2016         # Year written — displayed as subtext
 ```
 
 **Stories** (`src/stories/*.md`):
@@ -59,6 +61,7 @@ layout: story.njk
 permalink: "/stories/{{ page.fileSlug }}/"
 wordcount: 1200    # Displayed on the page
 order: 10
+year: 2014         # Year written — displayed as "year · wordcount words"
 ```
 
 ## Build & Deploy
@@ -80,5 +83,6 @@ order: 10
 - **Filenames**: kebab-case (`caffeine-dreams.md`) — auto-becomes the URL slug
 - **Order field**: use increments of 10 (10, 20, 30…) so new items can be inserted between existing ones without renumbering
 - **Homepage** shows the 5 most recent poems and stories (reversed collection order)
-- **Index pages** show all items in ascending order
+- **Index pages** show all items in reverse order (newest first)
+- **Listing item macro** (`listing-item.njk`): all listing pages import and use the `listingItem(url, title, year, wordcount)` macro — poems omit `wordcount`, stories pass it
 - Always rebuild `docs/` after source changes before committing
