@@ -97,12 +97,13 @@ article {
 }
 
 article h1 {
-  margin-bottom: 1.5rem;
+  margin-bottom: 0.25rem;
 }
 
 .quote {
   text-align: center;
   font-style: italic;
+  font-weight: bold;
   font-size: 1.2rem;
   margin: 0 0 2rem;
 }
@@ -129,4 +130,15 @@ article h1 {
   width: 20px;
   height: 20px;
   color: #5a5752;
+}
+
+.subtext {
+  display: block;
+  font-size: 0.8rem;
+  color: #9a9692;
+}
+
+article .subtext {
+  font-size: 0.95rem;
+  margin-bottom: 1.5rem;
 }

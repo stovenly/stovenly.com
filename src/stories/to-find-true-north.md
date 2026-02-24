@@ -2,6 +2,8 @@
 title: To Find True North
 layout: story.njk
 permalink: "/stories/{{ page.fileSlug }}/"
+wordcount: 2131
+order: 70
 ---
 
 Maybe you're just going crazy, you know? Too much time behind a glowing screen, too little time in front of people you love, or people who love you. I don't know. But something's... something's different. You ever feel stable? No, not like standing on a fencepost, you idiot. I mean *emotionally*. I feel all kinds of fucked up, these days. I see a poster for some earrings, and I see them on her... and I just lose it. No, on the inside. I lose it on the inside.

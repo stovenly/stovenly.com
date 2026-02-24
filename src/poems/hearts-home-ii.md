@@ -2,6 +2,7 @@
 title: Heart's Home II
 layout: poem.njk
 permalink: "/poems/{{ page.fileSlug }}/"
+order: 170
 ---
 
 The world had lost its whales, but their sky was full of sails.

@@ -2,6 +2,7 @@
 title: Leave Me Where The Sea Can Blind Me
 layout: poem.njk
 permalink: "/poems/{{ page.fileSlug }}/"
+order: 100
 ---
 
 rinse over me

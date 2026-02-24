@@ -2,6 +2,8 @@
 title: Fallen Leaves
 layout: story.njk
 permalink: "/stories/{{ page.fileSlug }}/"
+wordcount: 1501
+order: 80
 ---
 
 "And your... your father?" she asked him, pulling back from his too-enticing embrace. "What will he think?"

@@ -2,6 +2,7 @@
 title: In Her Sunday Best
 layout: poem.njk
 permalink: "/poems/{{ page.fileSlug }}/"
+order: 60
 ---
 
 she told me

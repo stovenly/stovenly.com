@@ -12,11 +12,15 @@ module.exports = function(eleventyConfig) {
     eleventyConfig.addPassthroughCopy({"static": "."});
   
     eleventyConfig.addCollection("poems", function(collectionApi) {
-        return collectionApi.getFilteredByGlob("src/poems/*.md");
+        return collectionApi.getFilteredByGlob("src/poems/*.md").sort((a, b) => {
+            return (a.data.order || 0) - (b.data.order || 0);
+        });
     });
 
     eleventyConfig.addCollection("stories", function(collectionApi) {
-        return collectionApi.getFilteredByGlob("src/stories/*.md");
+        return collectionApi.getFilteredByGlob("src/stories/*.md").sort((a, b) => {
+            return (a.data.order || 0) - (b.data.order || 0);
+        });
     });
 
     return {
