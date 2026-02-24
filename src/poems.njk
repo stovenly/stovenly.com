@@ -1,0 +1,11 @@
+---
+title: Poems
+layout: base.njk
+permalink: /poems/
+---
+<h1>Poems</h1>
+<ul class="listing-list">
+  {% for poem in collections.poems %}
+    <li><a href="{{ poem.url }}">{{ poem.data.title }}</a></li>
+  {% endfor %}
+</ul>

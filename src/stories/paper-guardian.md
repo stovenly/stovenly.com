@@ -1,0 +1,95 @@
+---
+title: Paper Guardian
+layout: story.njk
+permalink: "/stories/{{ page.fileSlug }}/"
+---
+
+"Looks like we lost contact with central again - we're crossing the west perimeter."
+
+Three weeks flying over this old desert. A whole city sector blacked out on the satellite, and why? It's all here - cored-out buildings, burnt-up parks, twist-tied shoelace highways. All the Old typicals. But there's something else. There's more noise in these blocks than the nuclear sites down the valley, more fallen birds than the budget wants to admit.
+
+"Keep your scanner going. I'm taking us lower."
+
+A hole this big, a rock that size could power a whole station.
+
+"Careful, Marik." Her eyes were tired.
+
+"The empty square, in that hall. Put us down."
+
+White clouds rolled past the windows, the
+
+Marik was unamused, like most days, but the prospect of another fragment sparked his interest. Changing the comm view to the external cameras, he disabled autopilot and guided the ship down. The clouds fell upward and the corroded city greeted them once again. Malnourished concrete lay taut and twisted in a petrified terror, exposed rebar holding it together as it hung limply in the sky.
+
+"I'm going to bring it down in that courtyard, Anna," he called to her over the ship's open channel. "Looks like a mess, but we should be alright. Activate stabilizers and get those handhelds out."
+
+A circular form of mossed cobble sat under the ship's landing zone, the path breaking off into four directions. Each cardinal direction went off to some unbroken segment of path, more mossy stone giving way into the park that little children probably once enjoyed. Trees stood - husks of trees - around the middle of that courtyard.
+
+A large wasp - no, perhaps a hummingbird, or a dolphin - a metallic form of some animal let off blue streaming light. It fell freely, balancing itself with the violent bursts of spattered flame. It teetered for a moment, and dropped down a measure or so. Up and down it went, playing a balancing game, until it felt this had gone on long enough. Bent legs shot out of the sides, the insectoid form propping itself up and the blue flames subsiding. Husks of trees now had charred ends, and parts of that green mossy cobble were now soot over with a charred black. The ship had landed.
+
+"Anna, everything okay?"
+
+"Good on this end, Marik. I have the handhelds in the chute, and your atmospheric suit reads operational. See you ground-side."
+
+As he stepped down the cargo ramp, Marik felt the chilly wind swipe at his suit - but the air was not safe. Next to him, another bubble of a person stood holding a little pad, and he had one of his own. Fragment detectors, for now, but they did plenty of other things. Triangulation on the screen pointed in a direction off to the north, so they walked through the courtyard towards the building that way.
+
+A static chatter broke through the silence of his suit's helmet. "Marik, it looks like the signal's coming from that large building up ahead, historical records on the dataset have it listed as the city's old library."
+
+"Why a library? All the fragments before have embedded themselves places that were in the middle of nowhere, but this is in the middle of a busy metropolis - well, it used to be," he looked through his own dataset for information on the library. Rackler Public Library. Closed indefinitely due to the global war effort, nearly five centuries ago, most of the books inside were abandoned and forgotten. Now, all that's left was a dusty old building, with an entrance arch having most of its bricks fallen out onto the pavement below. Above the cracked brick and windows, the building held onto a few letters that hinted towards what Marik already knew.
+
+*RA~ LER ~~ UBL C~~ LIBR~ Y*
+
+"The signal strength from the fragment is twenty times more powerful than the last one, Marik. We should be careful in there." Anna moved towards the door, the large swing doors that were once designed for public transport and grand aesthetics.
+
+Light pierced through the high windows down into the library. Large refulgent squares sat along the far wall, little shining gateways of book spines. Before them was a large entryway, the receptionist desk circling around a main table covered in stacks of dusty old papers. The dust shot up around the door, and the bright sky and harsh wind crept through its hinges. Discarded papers flung up and around in the stirring air, as Marik shut the door behind Anna and looked again towards his dataset.
+
+"It's close, but the signal is so strong the exact location is fuzzy."
+
+"Marik..."
+
+"Anna? What is -"
+
+The wind blowing through the door had blown away the stack of papers on the center table of that encircling desk, and underneath their cover there lay a sleeping woman. She lie naked, on her back, skin as fresh as that of a newborn. Her hands coiled up to her stomach, wrapped around a large red gem.
+
+"The fragment!" Marik's sparked interest suddenly came alive again, and he ran forward in his suit to inspect the woman. Before reaching the edge of the encircling desk, all of the doors to enter the library suddenly swung open. The harsh wind caught his back and knocked him over, falling into decrepit stacks of old books.
+
+The room glowed from the sudden inward flow of open sky. Anna held onto a door handle as Marik stood and braced himself against the wind. The wind blew, and papers spiraled around the room in a torrent. Above the sleeping woman, papers stuck to an invisible form. More stuck, and the papers melded to form a solid texture and shape. Its neck rung out, and its jaws spoke, howling its words along the virulent wind.
+
+*"I guard this woman's slumber, and death to those who would end it!"*
+
+"Marik, it's coming from the fragment!"
+
+*"This crystal is ours! Stay away!"*
+
+Marik held back now, standing with Anna back by the door. His suit's arms were covered in glowing blue lines - he was accessing its power supply. His arm came forward and a bright light shone from one of the openings on his wrist. A sudden burst of energy tore a hole through the clump of sentient paper that now hung above the sleeping woman, but more paper spiraled inward and replaced it, melding again to the form of that beast. It slowly approached its animal form, and soon a large feral creature tore down onto the edge of the encircling table. Its flesh and fur were crafted from paper, but the claws and teeth looked silvery and sinister.
+
+*"As the guardian of this woman, I will protect her with my life."*
+
+That last threat was accompanied with a vicious growl, and the paper fur ruffled around its mane in a final display of aggression. It charged the two now, its paws striking the ground with fervent thunder.
+
+"Marik, the shield!" Around the two suits, a large bubble appeared. Its surface drew from the powered lines on Marik's arms, and it had a milky cloudiness that obscured the distant walls. The paper guardian stopped at its edge, and clawed at it with his arms, struggling desperately to find a way in.
+
+*"You are foolish - you seek power that you cannot control!"*
+
+Its teeth dug into the milky white barrier, those silvery fangs that curled in such a sinister way. They dug and tore, ripping a hole through its clouded surface. Its head soon tore through, with Marik's arms now glowing a bloody red showing the diminishing power of his shield. Anna put up her own arms to replenish its power, but suddenly dozens of paper clumps flew through the torn hole and knocked her over into the barrier. It fizzled out and her body convulsed as she screamed in pain, having been flung into the unstable shield.
+
+The beast ravaged forward, and clasped its jaws on Anna's body, tearing open her pressurized suit and shredding her soft flesh apart with silvery fangs. Marik lay screaming her name, unable to move after the shield completely drained suit power. He watched, helpless, as the guardian of the library tore his partner to shreds. It turned, finished with its meal, the paper texture of its face now stained with a poignant red glare in the sunlight of the open door. It howled, kicking Anna with its paw as wind and paper coalesced to throw her across the room.
+
+It ran towards Marik's immovable corpse, and the paper in its form undulated as it leapt up, bringing its fangs down upon that helpless suit.
+
+*"Feel despair, as I have!"*
+
+The surface of its papery jaws were coated with the life of those who dared to intervene.
+
+*"Rest now, weary travelers."*
+
+The thing's form now changed, first papers fell off at large segments, losing the tail and its hind legs, but then it reformed into the shape of a man. Completely covered in the surface of paper, an eerie human being it became. He approached the sleeping woman, who was now grasping more tightly than before around a brightly glowing crystal. His papery fingers glided across her forehead, and it calmed her. She relaxed, and the crystal dimmed. Her eyes opened, and a smile on her face greeted her paper guardian.
+
+"Rolan..." was the tired word that came out of her mouth. Her eyes and forehead were displeased, and she wanted to say more. "I'm.. I'm so tired, Rolan..." she struggled.
+
+The paper guardian hushed her, and ran his hands across her face. Her eyes fell into slumber, and the crystal dimmed to an ominous hum. The light from the evening sun now glimmered onto the edge of her table, a reminder of the dangerous world outside.
+
+The guardian turned to look at the two corpses he had left, their red blood now in great puddles across the entryway. He looked at the destruction, but saw only what was necessary to ensure her preservation. The woman lay soundly asleep, and the crystal kept her alive while he swore to protect her.
+
+*"Until next time, travelers."*
+
+The papers of his form suddenly split, and the invisible fibers of their holding vanished. The doors of the library slammed shut, a forceful wind pushing them. The pile that was the man now fluttered around in the dancing wind, and scattered about in the bright light that poured in through the windows above. They finally settled, falling to settle in a pile on a table that stood in the middle of the library's grand encircling desk. They sat in that pile, obscuring and protecting the one thing left in this world worth fighting for.
