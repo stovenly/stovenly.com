@@ -78,6 +78,30 @@ a:hover {
   color: #556b58;
 }
 
+.recent-sections {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0 2rem;
+}
+
+@media (min-width: 640px) {
+  .recent-sections {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .recent-sections h2 {
+    margin-top: 0;
+  }
+}
+
+.view-all-item {
+  margin-top: 0.25rem;
+}
+
+.view-all-item a {
+  font-style: italic;
+}
+
 .listing-list {
   list-style: none;
   padding: 0;

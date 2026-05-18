@@ -28,20 +28,28 @@ layout: base.njk
   </li>
 </ul>
 
-<h2>Recent Poems</h2>
-<ul class="listing-list">
-  {% for poem in collections.poems | reverse %}
-    {% if loop.index <= 5 %}
-    {{ listingItem(poem.url, poem.data.title, poem.data.year) }}
-    {% endif %}
-  {% endfor %}
-</ul>
+<div class="recent-sections">
+  <section>
+    <h2>Recent Stories</h2>
+    <ul class="listing-list">
+      {% for story in collections.stories | reverse %}
+        {% if loop.index <= 5 %}
+        {{ listingItem(story.url, story.data.title, story.data.year, story.data.wordcount) }}
+        {% endif %}
+      {% endfor %}
+      <li class="view-all-item"><a href="/stories/">View all stories &rarr;</a></li>
+    </ul>
+  </section>
 
-<h2>Recent Stories</h2>
-<ul class="listing-list">
-  {% for story in collections.stories | reverse %}
-    {% if loop.index <= 5 %}
-    {{ listingItem(story.url, story.data.title, story.data.year, story.data.wordcount) }}
-    {% endif %}
-  {% endfor %}
-</ul>
+  <section>
+    <h2>Recent Poems</h2>
+    <ul class="listing-list">
+      {% for poem in collections.poems | reverse %}
+        {% if loop.index <= 5 %}
+        {{ listingItem(poem.url, poem.data.title, poem.data.year) }}
+        {% endif %}
+      {% endfor %}
+      <li class="view-all-item"><a href="/poems/">View all poems &rarr;</a></li>
+    </ul>
+  </section>
+</div>
