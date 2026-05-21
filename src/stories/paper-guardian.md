@@ -19,7 +19,7 @@ A hole this big, a rock that size could power a whole station.
 
 "The empty square, in that hall. Put us down."
 
-White clouds rolled past the windows, the
+White clouds rolled past the windows, the little drops running up the glass.
 
 Marik was unamused, like most days, but the prospect of another fragment sparked his interest. Changing the comm view to the external cameras, he disabled autopilot and guided the ship down. The clouds fell upward and the corroded city greeted them once again. Malnourished concrete lay taut and twisted in a petrified terror, exposed rebar holding it together as it hung limply in the sky.
 
