@@ -1,2 +1,8 @@
 # Dependencies
 node_modules/
+
+# Local design docs / specs (not part of the published site)
+designs/
+
+# Python bytecode (from util/ scripts)
+__pycache__/

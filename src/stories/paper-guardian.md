@@ -5,6 +5,7 @@ permalink: "/stories/{{ page.fileSlug }}/"
 wordcount: 1795
 order: 10
 year: 2012
+blurb: "Scavengers hunt a dead world for buried power."
 ---
 
 "Looks like we lost contact with central again - we're crossing the west perimeter."
@@ -27,7 +28,7 @@ Marik was unamused, like most days, but the prospect of another fragment sparked
 
 A circular form of mossed cobble sat under the ship's landing zone, the path breaking off into four directions. Each cardinal direction went off to some unbroken segment of path, more mossy stone giving way into the park that little children probably once enjoyed. Trees stood - husks of trees - around the middle of that courtyard.
 
-A large wasp - no, perhaps a hummingbird, or a dolphin - a metallic form of some animal let off blue streaming light. It fell freely, balancing itself with the violent bursts of spattered flame. It teetered for a moment, and dropped down a measure or so. Up and down it went, playing a balancing game, until it felt this had gone on long enough. Bent legs shot out of the sides, the insectoid form propping itself up and the blue flames subsiding. Husks of trees now had charred ends, and parts of that green mossy cobble were now soot over with a charred black. The ship had landed.
+A large wasp - no, perhaps a hummingbird, or a dolphin - a metallic form of some animal let off blue streaming light. It fell freely, balancing itself with the violent bursts of spattered flame. It teetered for a moment, and dropped down a measure or so. Up and down it went, playing a balancing game, until it felt this had gone on long enough. Bent legs shot out of the sides, the insectoid form propping itself up and the blue flames subsiding. Husks of trees now had charred ends, and parts of that green mossy cobble were now sooted over with a charred black. The ship had landed.
 
 "Anna, everything okay?"
 
@@ -51,7 +52,7 @@ Light pierced through the high windows down into the library. Large refulgent sq
 
 "Anna? What is -"
 
-The wind blowing through the door had blown away the stack of papers on the center table of that encircling desk, and underneath their cover there lay a sleeping woman. She lie naked, on her back, skin as fresh as that of a newborn. Her hands coiled up to her stomach, wrapped around a large red gem.
+The wind blowing through the door had blown away the stack of papers on the center table of that encircling desk, and underneath their cover there lay a sleeping woman. She lay naked, on her back, skin as fresh as that of a newborn. Her hands coiled up to her stomach, wrapped around a large red gem.
 
 "The fragment!" Marik's sparked interest suddenly came alive again, and he ran forward in his suit to inspect the woman. Before reaching the edge of the encircling desk, all of the doors to enter the library suddenly swung open. The harsh wind caught his back and knocked him over, falling into decrepit stacks of old books.
 
@@ -77,7 +78,7 @@ Its teeth dug into the milky white barrier, those silvery fangs that curled in s
 
 The beast ravaged forward, and clasped its jaws on Anna's body, tearing open her pressurized suit and shredding her soft flesh apart with silvery fangs. Marik lay screaming her name, unable to move after the shield completely drained suit power. He watched, helpless, as the guardian of the library tore his partner to shreds. It turned, finished with its meal, the paper texture of its face now stained with a poignant red glare in the sunlight of the open door. It howled, kicking Anna with its paw as wind and paper coalesced to throw her across the room.
 
-It ran towards Marik's immovable corpse, and the paper in its form undulated as it leapt up, bringing its fangs down upon that helpless suit.
+It ran towards Marik's immovable body, and the paper in its form undulated as it leapt up, bringing its fangs down upon that helpless suit.
 
 *"Feel despair, as I have!"*
 

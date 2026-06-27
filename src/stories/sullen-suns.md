@@ -5,6 +5,7 @@ permalink: "/stories/{{ page.fileSlug }}/"
 wordcount: 200
 order: 40
 year: 2014
+blurb: "A caged beast with a dying sun in every scale."
 ---
 
 The walls were perfect portraits of moving oceans. The ceiling rose up, fading far into foggy nothingness. The floor was swept marble with streaks of swirling darkness, passing one another and bundling up in layers below.

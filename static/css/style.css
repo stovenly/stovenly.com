@@ -4,7 +4,11 @@
 
 body {
   margin: 0;
-  font-family: "Verdana", Geneva, sans-serif;
+  /* Verdana first for prose; symbol fonts as per-glyph fallback so the
+     broadcast in "To Surpass, Darkly" (box/ballot/combining glyphs Verdana
+     lacks) renders instead of showing tofu boxes. */
+  font-family: "Verdana", Geneva, "Segoe UI Symbol", "Apple Symbols",
+    "Noto Sans Symbols2", "Noto Sans Symbols", Symbola, sans-serif;
   font-size: 18px;
   line-height: 1.7;
   color: #2c2c2c;
@@ -116,6 +120,16 @@ a:hover {
   font-size: 1.1rem;
 }
 
+/* Hooky one-liner shown under a story in the /stories listing (from the
+   `blurb` front matter field). */
+.listing-blurb {
+  margin: 0.1rem 0 0;
+  max-width: 60ch;
+  font-size: 0.8rem;
+  line-height: 1.45;
+  color: #9a9692;
+}
+
 article {
   margin-top: 1rem;
 }
@@ -169,4 +183,28 @@ article .subtext {
 
 article.story p {
   text-indent: 1.5em;
+}
+
+/* .zalgo-text: for passages of zalgo / "broken" Unicode — base glyphs (box,
+   ballot, dingbat, etc.) carrying many stacked combining marks. Such marks
+   only cascade when they share a font (with GPOS mark-stacking) with their
+   base, and no common system font has both the symbols AND the marks. So we
+   self-host a subset of DejaVu Sans (libre; carries a wide range of symbols,
+   the combining diacriticals, and the mark-to-base/mark-to-mark GPOS lookups)
+   as a Unicode fallback for these blocks. Used by "To Surpass, Darkly".
+   Intentional redaction blocks (█) in normal text are unaffected. */
+@font-face {
+  font-family: "UnicodeFallback";
+  src: url("/fonts/unicode-fallback.woff2") format("woff2");
+  font-display: swap;
+}
+
+.zalgo-text {
+  font-family: "UnicodeFallback", "Segoe UI Symbol", Symbola, sans-serif;
+  line-height: 2.2;            /* room for marks dropping below the line */
+  overflow-wrap: anywhere;
+}
+
+.zalgo-text p {
+  text-indent: 0;
 }

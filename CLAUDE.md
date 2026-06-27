@@ -20,8 +20,8 @@ src/                        # All source files
     poem.njk                #   Poem article layout (extends base)
     story.njk               #   Story article layout with word count (extends base)
     listing-item.njk        #   Reusable macro for listing items (used by index, poems, stories)
-  poems/                    # Poem markdown files (17 files)
-  stories/                  # Story markdown files (10 files)
+  poems/                    # Poem markdown files
+  stories/                  # Story markdown files
   index.njk                 # Homepage
   poems.njk                 # Poems listing page
   stories.njk               # Stories listing page
@@ -62,7 +62,47 @@ permalink: "/stories/{{ page.fileSlug }}/"
 wordcount: 1200    # Displayed on the page
 order: 10
 year: 2014         # Year written — displayed as "year · wordcount words"
+blurb: "..."       # One-sentence teaser shown under the story on /stories (see Story Blurbs)
 ```
+
+## Story Blurbs
+
+Each story has a `blurb` in its front matter: a very short teaser shown under the
+title on the `/stories` listing only (not the homepage, not on the story page). It's
+styled small and muted (`.listing-blurb`).
+
+A blurb is a teaser, not a summary. It introduces the *setup* and makes the reader
+want to find out the rest. It is **not** a logline that states conflict + stakes +
+resolution — that gives away too much. Think back-cover hook, not plot synopsis.
+
+Hard rules (these come from direct author feedback — follow them):
+
+- **Exposition, never plot.** Lead with the world, the setting, the character's
+  situation — the stuff true on page one, before anything happens. NEVER the inciting
+  incident, the conflict, the turn, the twist, or the ending.
+  - ✓ "A drifter at the bottom of the world." ✗ "...and someone already knows he's there."
+  - ✓ "Scavengers hunt a dead world for buried power." ✗ "...and something is guarding it."
+- **Never reveal the point.** No twists, and no stating the story's theme or hidden
+  conceit — even obliquely. If the reader has to finish the story to *get* something,
+  the blurb must not get it for them.
+  - ✗ "a trip that was never really about the trip" (states the theme)
+  - Rooms is secretly about doors as people the author knew → the blurb must NOT hint that.
+- **Center the character/situation, not props or details.** "A drifter at the bottom of
+  the world," not "Two guns in the glovebox."
+- **Very short.** A single image — one short clause or fragment, ~5–10 words. Shorter and
+  more evocative beats complete and explanatory.
+- **No fake-short.** Don't dodge brevity by welding two long clauses with a comma
+  ("long phrase, and another long phrase"). One image, then stop.
+- **No A, B, and C lists.** The three-part "X, one Y, and a Z" / "X, and Y, and Z" cadence
+  reads as filler and as AI. Pick one image instead.
+- **No meta.** Never reference the medium or the writing itself — not the word count
+  ("two hundred words..."), not "a story about...", not the form.
+- **Don't sound AI-generated.** Avoid tidy summary rhythm and the compound-list tell.
+  Use vivid, specific, slightly off-kilter phrasing. Read it aloud; if it sounds like a
+  pitch deck, rewrite it.
+- **Match the tone** to the story (tense for a thriller, wry for a comedy).
+- **When in doubt, cut toward less.** A blurb that's too vague is better than one that
+  spoils.
 
 ## Build & Deploy
 
@@ -84,5 +124,5 @@ year: 2014         # Year written — displayed as "year · wordcount words"
 - **Order field**: use increments of 10 (10, 20, 30…) so new items can be inserted between existing ones without renumbering
 - **Homepage** shows the 5 most recent poems and stories (reversed collection order)
 - **Index pages** show all items in reverse order (newest first)
-- **Listing item macro** (`listing-item.njk`): all listing pages import and use the `listingItem(url, title, year, wordcount)` macro — poems omit `wordcount`, stories pass it
+- **Listing item macro** (`listing-item.njk`): all listing pages import and use the `listingItem(url, title, year, wordcount, blurb)` macro — poems pass only `url, title, year`; the `/stories` page also passes `wordcount` and `blurb`; the homepage passes `wordcount` but omits `blurb`
 - Always rebuild `docs/` after source changes before committing

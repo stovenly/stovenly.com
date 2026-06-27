@@ -5,6 +5,7 @@ permalink: "/stories/{{ page.fileSlug }}/"
 wordcount: 1118
 order: 100
 year: 2021
+blurb: "A bounty hunter on a fresh trail."
 ---
 
 The stars hung low over charred smokestacks, the red brick buildings cold and dark. Tall cranes shone in the moonlight. Mismatched piles of dull shipping containers sat guarded and full of secrets. Between the roads and train tracks and wire fences and weeds - a sizzle bit the air, left it crisp and burnt. Heavy boots crunched the gravel. A bounty hunter had come.

@@ -5,6 +5,7 @@ permalink: "/stories/{{ page.fileSlug }}/"
 wordcount: 1019
 order: 90
 year: 2016
+blurb: "An old man gives away pieces of a soul."
 ---
 
 "Another one? Sure you don't just want to call it a day?"

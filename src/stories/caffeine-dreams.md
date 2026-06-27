@@ -5,6 +5,7 @@ permalink: "/stories/{{ page.fileSlug }}/"
 wordcount: 1481
 order: 60
 year: 2015
+blurb: "A reporter haunted by dreams of a missing man."
 ---
 
 "I got you some coffee, James."

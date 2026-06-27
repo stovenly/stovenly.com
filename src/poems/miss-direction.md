@@ -24,7 +24,7 @@ of drowning and dives
 to die in your arms, with lips on your thighs
 
 like hope in strange and ancient love
-ilke open trains on walls above
+like open trains on walls above
 gusting through on heaven's gun
 your presence leaves my life undone
 

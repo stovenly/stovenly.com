@@ -5,6 +5,7 @@ permalink: "/stories/{{ page.fileSlug }}/"
 wordcount: 1940
 order: 50
 year: 2014
+blurb: "A radio contest pays for the saddest breakup."
 ---
 
 "Coming to you live from the city of angels in the Golden State, you're listening to KCQ FM. I'm your lovable host, James Frizzo, and it's time for our break-ups contest. We've got one broken heart on the line, ready to give us his story for the chance to win *five hundred dollars!*"
@@ -63,7 +64,7 @@ He was, in most ways, the most polite boy I had ever met, yet he had a needy sid
 
 "We're having some technical difficulties, so it looks like, uh, nevermind, yeah, keep going."
 
-"She was scared, but big, and after she snapped at me I went back to my truck and got a tranquilize. She ran like hell when I got her with it, and it took twenty minutes chasing her up the mountain till she went down, panting like crazy. But that was it. She had brought me all the way to the top of this massive overlook, a clearing between the trees that looked out over the city. I remember the way she kept looking back at me, too tired to move, but too afraid to fall asleep, give in to the tranquilizer, the sun shining off her eyes, and--"
+"She was scared, but big, and after she snapped at me I went back to my truck and got a tranquilizer. She ran like hell when I got her with it, and it took twenty minutes chasing her up the mountain till she went down, panting like crazy. But that was it. She had brought me all the way to the top of this massive overlook, a clearing between the trees that looked out over the city. I remember the way she kept looking back at me, too tired to move, but too afraid to fall asleep, give in to the tranquilizer, the sun shining off her eyes, and--"
 
 "A majestic beast, Peter. Truly."
 

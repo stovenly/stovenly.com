@@ -5,6 +5,7 @@ permalink: "/stories/{{ page.fileSlug }}/"
 wordcount: 1191
 order: 30
 year: 2014
+blurb: "An endless hallway of doors to other worlds."
 ---
 
 This was the place of doors: a long hallway, stretching far to either side. Fluorescent lights left a dull humming as they hung from the ceilings. Doors of every color lined the walls, of every make, of every age, of murals and memories and lives gone by. Some of them had holes or pockmarks, and some were smoothed over like a once-upon accident, only noticeable by the gap in the pattern. Nearby was one in particular, broken and twisted around its hinges, where soft flickering light spilled out.
@@ -21,7 +22,7 @@ The broken door moaned and snapped as I scrambled backward to slam it shut. The 
 
 A bell jingled loudly as the door opened, echoing from within. There were counters inside, covered with gears, cogs, rebar, screws and bolts, coated with dust and grime. The air was stale, and the dust fell back into my throat and left grit on my tongue. A solitary lamp hung from the ceiling, throwing shadows from everything. A lone cash register sat at a counter near the door, where a couple dollar bills were laid out. The counters stretched further and further back, where a door opened into a warehouse full of shelves.
 
-The warehouse led further and further back, The shelves going higher and higher past ceilings that kept moving upward, where metal scraps were stacked as high as buildings and the path weaved about them. Giant piles of cars, rusted bulldozers, split-open planes, a half-rotten skyscraper and the burst-open hull of an old nuclear submarine. Detail faded as the ground itself twisted up and fell, like great sand dunes polished off into smooth steel.
+The warehouse led further and further back. The shelves going higher and higher past ceilings that kept moving upward, where metal scraps were stacked as high as buildings and the path weaved about them. Giant piles of cars, rusted bulldozers, split-open planes, a half-rotten skyscraper and the burst-open hull of an old nuclear submarine. Detail faded as the ground itself twisted up and fell, like great sand dunes polished off into smooth steel.
 
 An hour's walk or more, and the dunes fell off into an ocean. The ceiling rose until it was gone, a blue sky with wiry clouds warped off towards a flat shimmering horizon. The ground had been polished flat before, but here it broke into fine bits, until the ground was white with sand that puffed out with your footsteps. Down by the water, a board hung by chains from a wooden frame, with yellow words inset by a handful of painted golden flowers:
 

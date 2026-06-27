@@ -5,6 +5,7 @@ permalink: "/stories/{{ page.fileSlug }}/"
 wordcount: 1501
 order: 80
 year: 2016
+blurb: "In a hidden glade, the fallen take root."
 ---
 
 "And your... your father?" she asked him, pulling back from his too-enticing embrace. "What will he think?"
