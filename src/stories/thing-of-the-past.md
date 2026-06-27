@@ -1,5 +1,5 @@
 ---
-title: Thing of the Past
+title: Thing Of The Past
 layout: story.njk
 permalink: "/stories/{{ page.fileSlug }}/"
 wordcount: 1462
