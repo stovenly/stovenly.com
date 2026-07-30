@@ -30,8 +30,11 @@ static/                     # Passthrough static assets (copied to output root)
   css/style.css             #   Single stylesheet
   favicon.ico
   CNAME                     #   GitHub Pages custom domain (stovenly.com)
+util/
+  minify.js                 # Post-build HTML/CSS minifier + class-name obfuscator
+  scriv_to_text.py          # Scrivener export helper
 docs/                       # Generated output (committed to repo, served by GitHub Pages)
-.eleventy.js                # Eleventy config (collections, markdown-it, passthrough copy)
+.eleventy.js                # Eleventy config (collections, markdown-it, passthrough copy, minify hook)
 ```
 
 ## Key Configuration (.eleventy.js)
@@ -107,8 +110,40 @@ Hard rules (these come from direct author feedback — follow them):
 ## Build & Deploy
 
 1. Edit content in `src/`
-2. Run `npx eleventy` to build into `docs/`
+2. Run `npm run build` to build into `docs/`
 3. Commit the `docs/` folder and push — GitHub Pages serves it automatically
+
+Use `npm run serve` for local development (live reload, **unminified** output). To
+preview exactly what ships, run `npm run build` and serve `docs/` with any static
+server.
+
+## Minification / Obfuscation
+
+`util/minify.js` runs from an `eleventy.after` hook, but **only when
+`ELEVENTY_RUN_MODE === "build"`** — dev output stays readable in devtools. It does
+one post-build pass over `docs/`:
+
+1. Reads the built `docs/css/style.css`, collects every class name used in selector
+   position, and builds a rename map (`.listing-blurb` → `.b`, etc.).
+2. Rewrites and minifies the stylesheet (clean-css, level 2).
+3. Rewrites every `class="…"` in the built HTML using the same map, then minifies
+   the HTML (html-minifier-terser) — stripping comments, collapsing whitespace, and
+   minifying the inline analytics script.
+
+Notes:
+
+- **Class names are shared state.** A class that appears in HTML but never in the
+  stylesheet is left untouched (and stays readable). If you add a class, style it.
+- Set `MANGLE_CLASS_NAMES = false` in `util/minify.js` to keep readable class names
+  while still minifying.
+- `keepClosingSlash` is on because the homepage inlines SVG — `<path …/>` must keep
+  its slash to close correctly in foreign content.
+- The site has no `<pre>`, `<code>`, `<textarea>` or `&nbsp;`, so whitespace
+  collapsing is safe. **If you ever add whitespace-sensitive markup, revisit
+  `collapseWhitespace`.**
+- This obscures markup only. Poem and story text is plain text in the HTML by
+  necessity and is not hidden from anyone reading the source.
+- Minified `docs/` produces one-line git diffs. Review changes in `src/`, not `docs/`.
 
 ## Styling Conventions
 

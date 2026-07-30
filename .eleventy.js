@@ -1,4 +1,6 @@
 const markdownIt = require("markdown-it");
+const { minifyOutput } = require("./util/minify");
+
 const markdownItOptions = {
   html: true,
   breaks: true,
@@ -21,6 +23,13 @@ module.exports = function(eleventyConfig) {
         return collectionApi.getFilteredByGlob("src/stories/*.md").sort((a, b) => {
             return (a.data.order || 0) - (b.data.order || 0);
         });
+    });
+
+    // Minify/obfuscate the built output. Skipped during --serve/--watch so the
+    // dev output stays readable in devtools.
+    eleventyConfig.on("eleventy.after", async ({ dir }) => {
+        if (process.env.ELEVENTY_RUN_MODE !== "build") return;
+        await minifyOutput(dir.output);
     });
 
     return {

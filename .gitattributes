@@ -1,0 +1,4 @@
+# docs/ is Eleventy's minified build output, not hand-written source. Collapse it
+# by default in GitHub diff views and exclude it from language stats. Local
+# `git diff` is unaffected. Review changes in src/ instead.
+docs/** linguist-generated=true
