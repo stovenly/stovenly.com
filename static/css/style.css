@@ -446,23 +446,36 @@ article.story p {
   border-radius: 10px;
   background-color: var(--menu-bg);
   box-shadow: 0 8px 24px var(--menu-shadow);
+  /* Required: the UA stylesheet sets `[popover] { color: canvastext }`, and
+     canvastext is a system colour that flips black<->white the instant
+     color-scheme changes, with no transition. Without an author colour here it
+     wins for the whole subtree and any descendant briefly paints black or
+     white mid-switch. */
+  color: var(--text);
   font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
   font-size: 0.9rem;
 
   opacity: 0;
   translate: 0 0.35rem;
-  /* One declaration, because `transition` is a shorthand — a second
-     declaration elsewhere would replace this wholesale rather than add to it.
-     Open/close uses its own 150ms; the theme colours use the shared token so
-     they stay locked to the rest of the page. */
+  /* Open/close only. The theme COLOURS deliberately do not transition here.
+
+     --text runs #2c2c2c <-> #d6d6d6, both neutral, so a crossfade between them
+     passes through roughly rgb(129,129,129). That is nearly the inactive icon
+     colour (#8a857e), so mid-switch the label appeared to turn into the icon
+     colour before settling. On a whole page that midpoint goes unnoticed; two
+     inches from a grey icon it is glaring.
+
+     Snapping the menu's colours removes the intermediate state entirely — the
+     label is only ever exactly --text. The page keeps its crossfade, and the
+     menu is a small floating surface where an instant swap reads fine.
+
+     One declaration, because `transition` is a shorthand: a second declaration
+     elsewhere replaces this wholesale rather than adding to it. */
   transition:
     opacity 150ms ease,
     translate 150ms ease,
     overlay 150ms ease allow-discrete,
-    display 150ms ease allow-discrete,
-    background-color var(--theme-duration) var(--theme-ease),
-    border-color var(--theme-duration) var(--theme-ease),
-    box-shadow var(--theme-duration) var(--theme-ease);
+    display 150ms ease allow-discrete;
 }
 
 .menu-popover:popover-open {
@@ -511,7 +524,6 @@ article.story p {
    have exactly ONE source of colour with no ancestor animating underneath it. */
 .menu-popover .menu-label {
   color: var(--text);
-  transition: color var(--theme-duration) var(--theme-ease);
 }
 
 /* Sliding sun-to-moon toggle. The thumb travels left to right; the glyph under
@@ -542,7 +554,6 @@ article.story p {
   padding: var(--switch-pad);
   border-radius: 1rem;
   background-color: var(--switch-track);
-  transition: background-color var(--theme-duration) var(--theme-ease);
 }
 
 /* Travelling thumb: centred in the first column, moves exactly one column. */
@@ -560,10 +571,8 @@ article.story p {
      length pair is spec'd but has been unreliable, and a concrete start value
      costs nothing. */
   translate: 0 0;
-  transition:
-    translate var(--theme-duration) var(--theme-ease),
-    background-color var(--theme-duration) var(--theme-ease),
-    box-shadow var(--theme-duration) var(--theme-ease);
+  /* Only the travel animates; the thumb's colour snaps with the rest. */
+  transition: translate var(--theme-duration) var(--theme-ease);
 }
 
 .switch-input:checked + .switch::before {
@@ -577,7 +586,6 @@ article.story p {
   justify-self: center;
   width: 0.8rem;
   height: 0.8rem;
-  transition: color var(--theme-duration) var(--theme-ease);
 }
 
 .switch-sun { color: var(--switch-icon-on); }
