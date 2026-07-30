@@ -2,6 +2,59 @@
   box-sizing: border-box;
 }
 
+:root {
+  /* Hardcoded so the canvas gradient below can match the header exactly.
+     50px = 0.5rem padding top + bottom (8px each) + a 34px line box
+     (.site-name at 1.25rem = 20px x body's 1.7 line-height).
+     If you restyle the header, update this to match. */
+  --header-height: 50px;
+  --header-bg: #2c2c2c;
+  --page-bg: #f8f7f4;
+}
+
+/* Scroll the content area, not the document.
+
+   The problem: a scrollbar on the document changes the layout width, so the
+   centered .container jumps sideways between a short page (homepage, no
+   scrollbar) and a long one (stories, poems).
+
+   `scrollbar-gutter: stable` on <html> fixes the jump but the reserved gutter
+   sits outside the scrollport where only the canvas background paints — the
+   full-bleed dark .site-header stops short and leaves a pale strip beside it.
+
+   So instead: <body> becomes a full-height flex column, the header sits OUTSIDE
+   the scroll container, and .scroll-area does the scrolling with its gutter
+   always reserved. The header spans the whole viewport because nothing is
+   reserved next to it, and the gutter shows .scroll-area's own background, which
+   is the page colour — so there is nothing to see.
+
+   Only above 640px: below that, touch devices use overlay scrollbars that take
+   no layout space (nothing to correct), and an inner scroller would stop mobile
+   browsers collapsing their address bar. */
+@media (min-width: 640px) {
+  html,
+  body {
+    height: 100%;
+  }
+
+  body {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .site-header {
+    position: static;
+    flex: 0 0 auto;
+  }
+
+  .scroll-area {
+    flex: 1 1 auto;
+    overflow-y: auto;
+    scrollbar-gutter: stable;
+    background-color: var(--page-bg);
+  }
+}
+
 body {
   margin: 0;
   /* Verdana first for prose; symbol fonts as per-glyph fallback so the
@@ -12,7 +65,7 @@ body {
   font-size: 18px;
   line-height: 1.7;
   color: #2c2c2c;
-  background-color: #f8f7f4;
+  background-color: var(--page-bg);
 }
 
 .container {
@@ -22,7 +75,8 @@ body {
 }
 
 .site-header {
-  background-color: #2c2c2c;
+  background-color: var(--header-bg);
+  height: var(--header-height);
   padding: 0.5rem 0;
   position: sticky;
   top: 0;
