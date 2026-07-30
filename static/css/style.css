@@ -2,14 +2,123 @@
   box-sizing: border-box;
 }
 
+/* ---------------------------------------------------------------------------
+   Theme tokens.
+
+   The theme is resolved before first paint by the inline script in theme.njk,
+   which sets data-theme="light|dark" on <html>. Every colour below goes through
+   a custom property so both themes share one set of rules.
+
+   The @media block at the end is the no-JavaScript fallback: with scripting off
+   there is no data-theme attribute, so the OS preference is honoured directly.
+   `color-scheme` is what tells the browser to paint the .scroll-area scrollbar
+   and focus rings to match — without it you get a bright scrollbar on a dark page.
+
+   Contrast note: every text pair here clears WCAG AA (4.5:1). The light link,
+   link-hover and subtext values were darkened from the original design, which
+   sat at 4.14:1, 5.40:1 and 2.74:1 respectively.
+   --------------------------------------------------------------------------- */
 :root {
-  /* Hardcoded so the canvas gradient below can match the header exactly.
+  /* Hardcoded so the header and anything aligning to it stay in sync.
      50px = 0.5rem padding top + bottom (8px each) + a 34px line box
      (.site-name at 1.25rem = 20px x body's 1.7 line-height).
      If you restyle the header, update this to match. */
   --header-height: 50px;
-  --header-bg: #2c2c2c;
+
+  /* One timing for every theme-change animation: the page background/text
+     crossfade and the toggle thumb travel must finish together. */
+  --theme-duration: 260ms;
+  --theme-ease: cubic-bezier(0.4, 0, 0.2, 1);
+
+  /* Toggle geometry. The thumb and the icon slots are both derived from
+     --switch-col so they share a centre line — see .switch below. */
+  --switch-pad: 0.15rem;
+  --switch-col: 1.65rem;
+  --switch-thumb-size: 1.4rem;
+
+  color-scheme: light;
   --page-bg: #f8f7f4;
+  --text: #2c2c2c;
+  --header-bg: #2c2c2c;
+  --header-text: #f8f7f4;
+  --header-text-hover: #d4d0c8;
+  --header-border: transparent;
+  --nav-link: #c8c4bc;
+  --link: #5f6f62;
+  --link-hover: #4b5c4e;
+  --subtext: #75716c;
+  --icon: #5a5752;
+  --menu-bg: #ffffff;
+  --menu-border: #ddd9d2;
+  --menu-hover: #efece6;
+  --menu-shadow: rgba(44, 44, 44, 0.18);
+  --switch-track: #cfcac2;
+  --switch-thumb: #ffffff;
+  --switch-icon-on: #5c5955;
+  --switch-icon-off: #8a857e;
+}
+
+:root[data-theme="dark"] {
+  color-scheme: dark;
+  --page-bg: #191919;
+  --text: #d6d6d6;
+  --header-bg: #101010;
+  --header-text: #f0f0f0;
+  --header-text-hover: #ffffff;
+  --header-border: #2b2b2b;
+  --nav-link: #b5b5b5;
+  --link: #f2f2f2;
+  --link-hover: #ffffff;
+  --subtext: #9b9b9b;
+  --icon: #8f8f8f;
+  --menu-bg: #232323;
+  --menu-border: #383838;
+  --menu-hover: #2e2e2e;
+  --menu-shadow: rgba(0, 0, 0, 0.5);
+  --switch-track: #4a4a4a;
+  --switch-thumb: #e8e8e8;
+  --switch-icon-on: #33312e;
+  --switch-icon-off: #8f8f8f;
+}
+
+/* No-JS fallback: honour the OS setting when no attribute was written. */
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
+    color-scheme: dark;
+    --page-bg: #191919;
+    --text: #d6d6d6;
+    --header-bg: #101010;
+    --header-text: #f0f0f0;
+    --header-text-hover: #ffffff;
+    --header-border: #2b2b2b;
+    --nav-link: #b5b5b5;
+    --link: #f2f2f2;
+    --link-hover: #ffffff;
+    --subtext: #9b9b9b;
+    --icon: #8f8f8f;
+    --menu-bg: #232323;
+    --menu-border: #383838;
+    --menu-hover: #2e2e2e;
+    --menu-shadow: rgba(0, 0, 0, 0.5);
+    --switch-track: #4a4a4a;
+    --switch-thumb: #e8e8e8;
+    --switch-icon-on: #33312e;
+    --switch-icon-off: #8f8f8f;
+  }
+}
+
+/* Theme-change transition. Applied only once [data-ready] is set (a frame after
+   first paint) so nothing animates on load, and scoped to the elements whose
+   colours actually change rather than a blanket `*`, which would make every
+   hover on the site feel laggy. */
+html[data-ready] body,
+html[data-ready] .site-header,
+html[data-ready] .scroll-area,
+html[data-ready] a {
+  transition:
+    background-color var(--theme-duration) var(--theme-ease),
+    color var(--theme-duration) var(--theme-ease),
+    border-color var(--theme-duration) var(--theme-ease);
 }
 
 /* Scroll the content area, not the document.
@@ -64,7 +173,7 @@ body {
     "Noto Sans Symbols2", "Noto Sans Symbols", Symbola, sans-serif;
   font-size: 18px;
   line-height: 1.7;
-  color: #2c2c2c;
+  color: var(--text);
   background-color: var(--page-bg);
 }
 
@@ -77,6 +186,7 @@ body {
 .site-header {
   background-color: var(--header-bg);
   height: var(--header-height);
+  border-bottom: 1px solid var(--header-border);
   padding: 0.5rem 0;
   position: sticky;
   top: 0;
@@ -92,7 +202,7 @@ body {
 }
 
 .site-name {
-  color: #f8f7f4;
+  color: var(--header-text);
   font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
   font-size: 1.25rem;
   font-weight: 700;
@@ -101,11 +211,11 @@ body {
 }
 
 .site-name:hover {
-  color: #d4d0c8;
+  color: var(--header-text-hover);
 }
 
 nav a {
-  color: #c8c4bc;
+  color: var(--nav-link);
   text-decoration: none;
   font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
   font-size: 0.9rem;
@@ -113,13 +223,13 @@ nav a {
 }
 
 nav a:hover {
-  color: #f8f7f4;
+  color: var(--header-text);
 }
 
 h1, h2, h3 {
   font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
   line-height: 1.2;
-  color: #2c2c2c;
+  color: var(--text);
 }
 
 h1 {
@@ -129,11 +239,11 @@ h1 {
 }
 
 a {
-  color: #6b7c6e;
+  color: var(--link);
 }
 
 a:hover {
-  color: #556b58;
+  color: var(--link-hover);
 }
 
 .recent-sections {
@@ -181,7 +291,7 @@ a:hover {
   max-width: 60ch;
   font-size: 0.8rem;
   line-height: 1.45;
-  color: #9a9692;
+  color: var(--subtext);
 }
 
 article {
@@ -221,13 +331,13 @@ article h1 {
 .social-links svg {
   width: 20px;
   height: 20px;
-  color: #5a5752;
+  color: var(--icon);
 }
 
 .subtext {
   display: block;
   font-size: 0.8rem;
-  color: #9a9692;
+  color: var(--subtext);
 }
 
 article .subtext {
@@ -261,4 +371,246 @@ article.story p {
 
 .zalgo-text p {
   text-indent: 0;
+}
+
+/* ---------------------------------------------------------------------------
+   Header menu.
+
+   A general-purpose overflow menu, currently holding only the theme toggle.
+   Add further rows as .menu-row siblings.
+
+   NOTE FOR ANY JAVASCRIPT: util/minify.js renames every class that appears in
+   selector position here, and the mapping changes whenever this file changes.
+   Scripts must hook on id or data-* attributes only — never on class names.
+   --------------------------------------------------------------------------- */
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+.menu-trigger {
+  display: inline-flex;
+  user-select: none;
+  -webkit-tap-highlight-color: transparent;
+  align-items: center;
+  justify-content: center;
+  margin-left: 1.5rem;
+  padding: 0.3rem;
+  border: 0;
+  border-radius: 5px;
+  background: none;
+  color: var(--nav-link);
+  cursor: pointer;
+  vertical-align: middle;
+}
+
+.menu-trigger:hover {
+  color: var(--header-text);
+}
+
+.menu-trigger:focus-visible {
+  outline: 2px solid var(--nav-link);
+  outline-offset: 2px;
+}
+
+.menu-trigger svg {
+  display: block;
+  width: 18px;
+  height: 18px;
+}
+
+/* Native popover: renders in the top layer, so it is never clipped by
+   .scroll-area's overflow, and gets click-outside plus Esc for free.
+   Being in the top layer also means the DOM parent does not position it —
+   theme-menu.njk sets top/right from the trigger's bounding box on open.
+   The values here are only a sane pre-JS fallback. */
+.menu-popover {
+  position: fixed;
+  user-select: none;
+  top: calc(var(--header-height) + 0.5rem);
+  right: 1.5rem;
+  inset-block-end: auto;
+  inset-inline-start: auto;
+  margin: 0;
+  padding: 0.3rem;
+  min-width: 12rem;
+  border: 1px solid var(--menu-border);
+  border-radius: 10px;
+  background-color: var(--menu-bg);
+  box-shadow: 0 8px 24px var(--menu-shadow);
+  font-family: system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-size: 0.9rem;
+
+  opacity: 0;
+  translate: 0 0.35rem;
+  /* One declaration, because `transition` is a shorthand — a second
+     declaration elsewhere would replace this wholesale rather than add to it.
+     Open/close uses its own 150ms; the theme colours use the shared token so
+     they stay locked to the rest of the page. */
+  transition:
+    opacity 150ms ease,
+    translate 150ms ease,
+    overlay 150ms ease allow-discrete,
+    display 150ms ease allow-discrete,
+    background-color var(--theme-duration) var(--theme-ease),
+    border-color var(--theme-duration) var(--theme-ease),
+    box-shadow var(--theme-duration) var(--theme-ease);
+}
+
+.menu-popover:popover-open {
+  opacity: 1;
+  translate: 0 0;
+}
+
+/* Entry animation. Without @starting-style the menu simply appears, which is an
+   acceptable degradation. */
+@starting-style {
+  .menu-popover:popover-open {
+    opacity: 0;
+    translate: 0 0.35rem;
+  }
+}
+
+.menu-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  padding: 0.45rem 0.6rem;
+  border-radius: 6px;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.menu-row:hover {
+  background-color: var(--menu-hover);
+}
+
+/* Ordinary site text. It takes --text like every other piece of prose, and its
+   transition comes from the shared html[data-ready] rule above — the same
+   declaration that drives the body, so the two can never diverge.
+
+   The colour is declared here rather than inherited from .menu-popover on
+   purpose: `color-scheme` flips with the theme, which flips the UA's
+   `canvastext` system colour between black and white, and text with no colour
+   of its own can be painted with that default for a frame mid-transition.
+
+   Deliberately unrelated to --switch-icon-on/off, which exist to contrast with
+   the toggle thumb rather than to match prose.
+
+   Scoped under .menu-popover for specificity, and given its own unconditional
+   transition rather than joining the html[data-ready] rule — this text must
+   have exactly ONE source of colour with no ancestor animating underneath it. */
+.menu-popover .menu-label {
+  color: var(--text);
+  transition: color var(--theme-duration) var(--theme-ease);
+}
+
+/* Sliding sun-to-moon toggle. The thumb travels left to right; the glyph under
+   it is the active theme.
+
+   Geometry: the track is two --switch-col columns wide plus padding either
+   side. The icons are centred in those columns via grid, and the thumb is
+   centred in one column and travels exactly one column. Both centre lines are
+   therefore derived from --switch-col and cannot drift apart.
+
+   The checkbox stays in the accessibility tree and the tab order — hidden with
+   opacity, not display:none, which would remove it from both. */
+.switch-input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+
+.switch {
+  position: relative;
+  flex: none;
+  display: grid;
+  grid-template-columns: var(--switch-col) var(--switch-col);
+  align-items: center;
+  width: calc(var(--switch-col) * 2 + var(--switch-pad) * 2);
+  height: calc(var(--switch-thumb-size) + var(--switch-pad) * 2);
+  padding: var(--switch-pad);
+  border-radius: 1rem;
+  background-color: var(--switch-track);
+  transition: background-color var(--theme-duration) var(--theme-ease);
+}
+
+/* Travelling thumb: centred in the first column, moves exactly one column. */
+.switch::before {
+  content: "";
+  position: absolute;
+  top: var(--switch-pad);
+  left: calc(var(--switch-pad) + (var(--switch-col) - var(--switch-thumb-size)) / 2);
+  width: var(--switch-thumb-size);
+  height: var(--switch-thumb-size);
+  border-radius: 50%;
+  background-color: var(--switch-thumb);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.35);
+  /* Explicit 0 0 rather than the initial `none`: interpolating from `none` to a
+     length pair is spec'd but has been unreliable, and a concrete start value
+     costs nothing. */
+  translate: 0 0;
+  transition:
+    translate var(--theme-duration) var(--theme-ease),
+    background-color var(--theme-duration) var(--theme-ease),
+    box-shadow var(--theme-duration) var(--theme-ease);
+}
+
+.switch-input:checked + .switch::before {
+  translate: var(--switch-col) 0;
+}
+
+/* One icon per column, centred — same centre line as the thumb. */
+.switch svg {
+  position: relative;  /* paint above the thumb */
+  z-index: 1;
+  justify-self: center;
+  width: 0.8rem;
+  height: 0.8rem;
+  transition: color var(--theme-duration) var(--theme-ease);
+}
+
+.switch-sun { color: var(--switch-icon-on); }
+.switch-moon { color: var(--switch-icon-off); }
+.switch-input:checked + .switch .switch-sun { color: var(--switch-icon-off); }
+.switch-input:checked + .switch .switch-moon { color: var(--switch-icon-on); }
+
+.switch-input:focus-visible + .switch {
+  outline: 2px solid var(--link);
+  outline-offset: 2px;
+}
+
+/* Fallback state for browsers without the Popover API (iOS < 17). The
+   controller toggles [hidden] and [data-open] by hand there. */
+.menu-popover[data-open] {
+  opacity: 1;
+  translate: 0 0;
+}
+
+/* Touch: meet the ~44px minimum target size, and keep the menu on screen. */
+@media (pointer: coarse) {
+  .menu-trigger {
+    padding: 0.6rem;
+    margin-left: 1rem;
+  }
+
+  .menu-row {
+    padding: 0.7rem 0.75rem;
+  }
+}
+
+@media (max-width: 420px) {
+  .menu-popover {
+    max-width: calc(100vw - 1.5rem);
+  }
 }

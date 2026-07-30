@@ -9,7 +9,8 @@ Personal creative writing portfolio (poetry & short fiction) at **stovenly.com**
 - **Content**: Markdown with YAML front matter
 - **Styling**: Single plain CSS file (no framework, no preprocessor)
 - **Hosting**: GitHub Pages from the `docs/` directory
-- **No JavaScript** on the front end
+- **Minimal JavaScript** on the front end: an inline theme resolver (must run
+  before first paint) and the header menu controller. Nothing else.
 
 ## Project Structure
 
@@ -125,7 +126,7 @@ one post-build pass over `docs/`:
 
 1. Reads the built `docs/css/style.css`, collects every class name used in selector
    position, and builds a rename map (`.listing-blurb` → `.b`, etc.).
-2. Rewrites and minifies the stylesheet (clean-css, level 2).
+2. Rewrites and minifies the stylesheet (lightningcss).
 3. Rewrites every `class="…"` in the built HTML using the same map, then minifies
    the HTML (html-minifier-terser) — stripping comments, collapsing whitespace, and
    minifying the inline analytics script.
@@ -134,6 +135,16 @@ Notes:
 
 - **Class names are shared state.** A class that appears in HTML but never in the
   stylesheet is left untouched (and stays readable). If you add a class, style it.
+- **JavaScript must never select by class name** — mangled names are not the
+  source names. Hook on `id` or `data-*`, which the minifier does not touch.
+- Output tokens are derived from a hash of the class name, so they are stable
+  across builds. They were positional once; an edit could turn `.m` from one
+  element into another, and any stale HTML/CSS pair then painted the wrong rules
+  onto the wrong elements. Do not go back to positional names.
+- The stylesheet URL carries `?v=<hash of its contents>` for the same reason:
+  HTML and CSS are only valid as a matched pair.
+- **lightningcss, not clean-css.** clean-css 5.x throws on `@starting-style` and
+  silently drops `allow-discrete`, both of which the theme menu needs.
 - Set `MANGLE_CLASS_NAMES = false` in `util/minify.js` to keep readable class names
   while still minifying.
 - `keepClosingSlash` is on because the homepage inlines SVG — `<path …/>` must keep

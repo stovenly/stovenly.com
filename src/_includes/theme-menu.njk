@@ -1,0 +1,119 @@
+{# Header menu controller. Runs at the end of <body>, so the DOM exists.
+
+   Every lookup here uses an id or a data-* attribute. util/minify.js renames
+   class names at build time, so querying by class would work in development and
+   break silently in docs/. #}
+<script>
+  (function () {
+    var root = document.documentElement;
+    var trigger = document.getElementById("menu-trigger");
+    var menu = document.getElementById("site-menu");
+    var toggle = menu.querySelector("[data-theme-switch]");
+    var media = matchMedia("(prefers-color-scheme: dark)");
+
+    function stored() {
+      try { return localStorage.getItem("theme"); } catch (e) { return null; }
+    }
+
+    function isDark() {
+      var pref = stored();
+      return pref ? pref === "dark" : media.matches;
+    }
+
+    function apply() {
+      root.dataset.theme = isDark() ? "dark" : "light";
+      toggle.checked = isDark();
+    }
+
+    /* The popover lives in the top layer, so its DOM parent does not position
+       it. Anchor it under the trigger instead of pinning it to the viewport
+       edge — the header content is a centred 720px column, so on wide screens
+       the trigger sits well inboard of the right edge. CSS anchor positioning
+       would do this declaratively but is still Chromium-only. */
+    function position() {
+      var r = trigger.getBoundingClientRect();
+      var header = trigger.closest("header");
+      // Clear the header, not just the button: the trigger's box is inset
+      // within it, so anchoring to the button alone leaves the menu overlapping
+      // the header bar.
+      var below = header ? Math.max(r.bottom, header.getBoundingClientRect().bottom) : r.bottom;
+      menu.style.top = (below + 6) + "px";
+      menu.style.left = "auto";
+      menu.style.right = (document.documentElement.clientWidth - r.right) + "px";
+    }
+
+    /* Popover API: Chrome 114+, Safari 17+, Firefox 125+. Older browsers (most
+       relevantly iOS 16 and below) ignore the popover attribute entirely, which
+       would leave the menu permanently on screen — so drive it by hand there. */
+    var native = typeof menu.showPopover === "function";
+
+    function isOpen() {
+      return native ? menu.matches(":popover-open") : menu.hasAttribute("data-open");
+    }
+
+    function close() {
+      if (!isOpen()) return;
+      if (native) menu.hidePopover();
+      else {
+        menu.removeAttribute("data-open");
+        menu.setAttribute("hidden", "");
+      }
+    }
+
+    if (native) {
+      menu.addEventListener("beforetoggle", function (e) {
+        if (e.newState === "open") position();
+      });
+    } else {
+      menu.setAttribute("hidden", "");
+      trigger.addEventListener("click", function (e) {
+        e.preventDefault();
+        if (isOpen()) return close();
+        menu.removeAttribute("hidden");
+        position();
+        // Next frame, so the transition has a state to animate from.
+        requestAnimationFrame(function () { menu.setAttribute("data-open", ""); });
+      });
+      // Light dismiss, which the native popover would give us for free.
+      document.addEventListener("click", function (e) {
+        if (isOpen() && !menu.contains(e.target) && !trigger.contains(e.target)) close();
+      });
+      document.addEventListener("keydown", function (e) {
+        if (e.key === "Escape") close();
+      });
+    }
+
+    // Anything that moves the trigger invalidates the anchor; just close.
+    ["resize", "scroll"].forEach(function (evt) {
+      window.addEventListener(evt, close, true);
+    });
+
+    toggle.addEventListener("change", function () {
+      try {
+        localStorage.setItem("theme", toggle.checked ? "dark" : "light");
+      } catch (e) { /* private mode: applies for this page view only */ }
+      apply();
+    });
+
+    // With nothing stored yet, follow the OS live.
+    media.addEventListener("change", function () {
+      if (!stored()) apply();
+    });
+
+    // Keep other open tabs in agreement.
+    window.addEventListener("storage", function (e) {
+      if (e.key === "theme") apply();
+    });
+
+    apply();
+
+    // Enable colour transitions only after the first paint, so the theme
+    // resolved in <head> does not animate in. Two frames: the first is queued
+    // before the initial paint, the second runs after it.
+    requestAnimationFrame(function () {
+      requestAnimationFrame(function () {
+        root.dataset.ready = "";
+      });
+    });
+  })();
+</script>

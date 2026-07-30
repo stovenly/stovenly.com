@@ -1,0 +1,27 @@
+{# Resolves the colour theme before first paint.
+
+   DO NOT add defer/async, move this to an external file, or move it below the
+   stylesheet link. All four would let the browser paint the default theme
+   first, which is the flash this exists to prevent. It must stay inline,
+   synchronous, and above <link rel="stylesheet">.
+
+   localStorage['theme'] is 'light' or 'dark'. The key being ABSENT means
+   "follow the OS" — that way a first-time visitor needs nothing written, and
+   returning to system mode is a removeItem.
+
+   The try/catch is load-bearing: localStorage throws in Safari private mode and
+   under some cookie-blocking settings, and an uncaught error here would leave
+   the page with no theme at all. #}
+<script>
+  (function () {
+    try {
+      var stored = localStorage.getItem("theme");
+      var dark = stored
+        ? stored === "dark"
+        : matchMedia("(prefers-color-scheme: dark)").matches;
+      document.documentElement.dataset.theme = dark ? "dark" : "light";
+    } catch (e) {
+      document.documentElement.dataset.theme = "light";
+    }
+  })();
+</script>
