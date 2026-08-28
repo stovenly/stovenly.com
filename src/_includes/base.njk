@@ -9,6 +9,13 @@
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
   <link rel="stylesheet" href="/css/style.css">
   <title>{{ title | default("stovenly") }}</title>
+  {% set ogDescription = blurb or description %}
+  <meta name="description" content="{{ ogDescription }}">
+  <meta property="og:site_name" content="stovenly">
+  <meta property="og:type" content="{{ ogType | default("website") }}">
+  <meta property="og:title" content="{{ title | default("stovenly") }}">
+  <meta property="og:description" content="{{ ogDescription }}">
+  <meta property="og:url" content="https://stovenly.com{{ page.url }}">
 </head>
 <body>
   <header class="site-header">
