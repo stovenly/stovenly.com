@@ -10,7 +10,8 @@ Personal creative writing portfolio (poetry & short fiction) at **stovenly.com**
 - **Styling**: Single plain CSS file (no framework, no preprocessor)
 - **Hosting**: GitHub Pages from the `docs/` directory
 - **Minimal JavaScript** on the front end: an inline theme resolver (must run
-  before first paint) and the header menu controller. Nothing else.
+  before first paint), the header menu controller, and the game media viewer
+  (game pages only). Nothing else.
 
 ## Project Structure
 
@@ -20,15 +21,20 @@ src/                        # All source files
     base.njk                #   Main HTML shell (header, nav, footer)
     poem.njk                #   Poem article layout (extends base)
     story.njk               #   Story article layout with word count (extends base)
+    game.njk                #   Game page layout: links row, body, media grid (extends base)
+    gallery-viewer.njk      #   Full-screen media viewer <dialog> + script, included by game.njk
     listing-item.njk        #   Reusable macro for listing items (used by index, poems, stories)
   poems/                    # Poem markdown files
   stories/                  # Story markdown files
+  games/                    # Game markdown files
   index.njk                 # Homepage
   poems.njk                 # Poems listing page
   stories.njk               # Stories listing page
+  games.njk                 # Games listing page
   404.njk                   # Error page
 static/                     # Passthrough static assets (copied to output root)
   css/style.css             #   Single stylesheet
+  img/games/<slug>/         #   Game screenshots and recordings
   favicon.ico
   CNAME                     #   GitHub Pages custom domain (stovenly.com)
 util/
@@ -43,9 +49,10 @@ docs/                       # Generated output (committed to repo, served by Git
 - **Input dir**: `src/` — **Output dir**: `docs/`
 - **Markdown-it** with `html: true`, `breaks: true`, `linkify: true`
 - **Passthrough copy**: `static/` → output root
-- **Two collections**, both sorted by `order` front matter field:
+- **Three collections**, all sorted by `order` front matter field:
   - `poems` — all `src/poems/*.md`
   - `stories` — all `src/stories/*.md`
+  - `games` — all `src/games/*.md`
 
 ## Content Front Matter
 
@@ -107,6 +114,38 @@ Hard rules (these come from direct author feedback — follow them):
 - **Match the tone** to the story (tense for a thriller, wry for a comedy).
 - **When in doubt, cut toward less.** A blurb that's too vague is better than one that
   spoils.
+
+
+**Games** (`src/games/*.md`):
+```yaml
+title: "Game Title"
+layout: game.njk
+permalink: "/games/{{ page.fileSlug }}/"
+order: 10
+year: 2024
+platform: "Browser"          # Optional — shown as "year · platform"
+blurb: "..."                 # One-liner shown on /games (see Game Blurbs)
+links:                       # Optional — rendered as a pill row above the body
+  - label: Play
+    url: https://...
+media:                       # Optional — thumbnail grid below the body, in this order
+  - video: recording.webm    # Files live at static/img/games/<slug>/
+  - image: screenshot1.png
+```
+
+Body markdown is the game's long-form info (what it is, features, credits).
+Games link out only — no in-page embeds, no thumbnails on the listing, and no
+homepage section. Media carry no alt text or captions.
+
+Clicking a `media` thumbnail opens `gallery-viewer.njk`: a full-screen `<dialog>`
+with prev/next, arrow keys, and inline video playback. `game.njk` includes it
+only when `media` is set. It hooks on ids only.
+
+## Game Blurbs
+
+The story blurb rules above do **not** apply to games. A game blurb should say
+plainly what the game is — genre, hook, one distinguishing thing — in one short
+sentence. Spoilers aren't a concern; being informative is the point.
 
 ## Build & Deploy
 

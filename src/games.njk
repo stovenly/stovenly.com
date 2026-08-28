@@ -1,0 +1,12 @@
+---
+title: Games
+layout: base.njk
+permalink: /games/
+---
+{% from "listing-item.njk" import listingItem %}
+<h1>Games</h1>
+<ul class="listing-list">
+  {% for game in collections.games | reverse %}
+    {{ listingItem(game.url, game.data.title, game.data.year, null, game.data.blurb) }}
+  {% endfor %}
+</ul>

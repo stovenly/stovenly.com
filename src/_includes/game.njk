@@ -1,0 +1,33 @@
+---
+layout: base.njk
+---
+<article class="game">
+  <h1>{{ title }}</h1>
+  <span class="subtext">{{ year }}{% if platform %} &middot; {{ platform }}{% endif %}</span>
+  {% if links %}
+  <ul class="game-links">
+    {% for link in links %}
+    <li><a href="{{ link.url }}">{{ link.label }}</a></li>
+    {% endfor %}
+  </ul>
+  {% endif %}
+  {{ content | safe }}
+  {% if media %}
+  {% set base = "/img/games/" + page.fileSlug + "/" %}
+  <div class="game-gallery" id="gallery">
+    {% for item in media %}
+    {% if item.video %}
+    <button type="button" class="gallery-item" data-video="{{ base }}{{ item.video }}">
+      <video src="{{ base }}{{ item.video }}" muted playsinline preload="metadata"></video>
+      <span class="gallery-play" aria-hidden="true"></span>
+    </button>
+    {% else %}
+    <button type="button" class="gallery-item" data-image="{{ base }}{{ item.image }}">
+      <img src="{{ base }}{{ item.image }}" alt="" loading="lazy">
+    </button>
+    {% endif %}
+    {% endfor %}
+  </div>
+  {% include "gallery-viewer.njk" %}
+  {% endif %}
+</article>

@@ -349,6 +349,154 @@ article.story p {
   text-indent: 1.5em;
 }
 
+.game-links {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 1.5rem;
+}
+
+
+.game-gallery {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.75rem;
+  margin-top: 2rem;
+}
+
+@media (min-width: 640px) {
+  .game-gallery {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+}
+
+.gallery-item {
+  position: relative;
+  display: block;
+  padding: 0;
+  border: 0;
+  border-radius: 4px;
+  overflow: hidden;
+  aspect-ratio: 16 / 9;
+  background: var(--header-bg);
+  cursor: pointer;
+}
+
+.gallery-item img,
+.gallery-item video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.gallery-item:hover img,
+.gallery-item:hover video {
+  opacity: 0.85;
+}
+
+.gallery-play {
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.6);
+}
+
+.gallery-play::after {
+  content: "";
+  position: absolute;
+  left: 55%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  border-style: solid;
+  border-width: 0.6rem 0 0.6rem 1rem;
+  border-color: transparent transparent transparent #fff;
+}
+
+.viewer {
+  width: 100vw;
+  height: 100vh;
+  max-width: none;
+  max-height: none;
+  margin: 0;
+  padding: 3rem;
+  padding-top: calc(var(--header-height) + 3rem);
+  border: 0;
+  background: rgba(0, 0, 0, 0.75);
+  color: #fff;
+}
+
+.viewer::backdrop {
+  background: transparent;
+}
+
+@media (max-width: 640px) {
+  .viewer {
+    padding: 1.25rem;
+    padding-top: calc(var(--header-height) + 1.25rem);
+  }
+}
+
+.viewer-stage {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.viewer-stage img,
+.viewer-stage video {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.viewer-close,
+.viewer-nav {
+  position: absolute;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 0;
+  background: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  cursor: pointer;
+  border-radius: 50%;
+}
+
+.viewer-close svg,
+.viewer-nav svg {
+  width: 55%;
+  height: 55%;
+}
+
+.viewer-close {
+  top: 1rem;
+  right: 1rem;
+  width: 2.5rem;
+  height: 2.5rem;
+}
+
+.viewer-nav {
+  top: 50%;
+  transform: translateY(-50%);
+  width: 3rem;
+  height: 3rem;
+}
+
+.viewer-prev { left: 1rem; }
+.viewer-next { right: 1rem; }
+
+.viewer-close:hover,
+.viewer-nav:hover {
+  background: rgba(255, 255, 255, 0.2);
+}
+
 /* .zalgo-text: for passages of zalgo / "broken" Unicode — base glyphs (box,
    ballot, dingbat, etc.) carrying many stacked combining marks. Such marks
    only cascade when they share a font (with GPOS mark-stacking) with their

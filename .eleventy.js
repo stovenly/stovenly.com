@@ -13,17 +13,11 @@ module.exports = function(eleventyConfig) {
     // Add a passthrough copy for the static assets
     eleventyConfig.addPassthroughCopy({"static": "."});
   
-    eleventyConfig.addCollection("poems", function(collectionApi) {
-        return collectionApi.getFilteredByGlob("src/poems/*.md").sort((a, b) => {
-            return (a.data.order || 0) - (b.data.order || 0);
-        });
-    });
-
-    eleventyConfig.addCollection("stories", function(collectionApi) {
-        return collectionApi.getFilteredByGlob("src/stories/*.md").sort((a, b) => {
-            return (a.data.order || 0) - (b.data.order || 0);
-        });
-    });
+    const byOrder = (a, b) => (a.data.order || 0) - (b.data.order || 0);
+    for (const name of ["poems", "stories", "games"]) {
+        eleventyConfig.addCollection(name, (collectionApi) =>
+            collectionApi.getFilteredByGlob(`src/${name}/*.md`).sort(byOrder));
+    }
 
     // Minify/obfuscate the built output. Skipped during --serve/--watch so the
     // dev output stays readable in devtools.
