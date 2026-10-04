@@ -33,4 +33,3 @@ A browser app for memorizing the flags of the world.
 - Memory hook for every flag
 - Regional map for every flag
 - Progress export and import
-- No account needed
