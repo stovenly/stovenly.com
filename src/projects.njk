@@ -1,0 +1,13 @@
+---
+title: Projects
+layout: base.njk
+permalink: /projects/
+description: Projects by stovenly.
+---
+{% from "listing-item.njk" import listingItem %}
+<h1>Projects</h1>
+<ul class="listing-list">
+  {% for project in collections.projects | reverse %}
+    {{ listingItem(project.url, project.data.title, project.data.year, null, project.data.blurb) }}
+  {% endfor %}
+</ul>

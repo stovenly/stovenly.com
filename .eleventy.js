@@ -14,7 +14,7 @@ module.exports = function(eleventyConfig) {
     eleventyConfig.addPassthroughCopy({"static": "."});
   
     const byOrder = (a, b) => (a.data.order || 0) - (b.data.order || 0);
-    for (const name of ["poems", "stories", "games"]) {
+    for (const name of ["poems", "stories", "games", "projects"]) {
         eleventyConfig.addCollection(name, (collectionApi) =>
             collectionApi.getFilteredByGlob(`src/${name}/*.md`).sort(byOrder));
     }
