@@ -25,3 +25,7 @@ A browser tool that reads a Nehrim save and shows which collectibles are still m
   - Ice Claws
   - Almanacs of Conjuration
   - Potions of Encumbrance
+
+## Disclosure
+
+AI coding assistants were used to accelerate the implementation of this project.

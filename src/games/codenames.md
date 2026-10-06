@@ -46,3 +46,7 @@ A browser version of the board game Codenames.
 
 - Colorblind mode
 - Dyslexia friendly font
+
+## Disclosure
+
+AI coding assistants were used to accelerate the implementation of this game.
