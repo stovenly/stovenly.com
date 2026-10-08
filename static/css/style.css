@@ -313,6 +313,11 @@ article h1 {
 .social-links {
   list-style: none;
   padding: 0;
+  display: grid;
+  grid-template-rows: repeat(2, auto);
+  grid-auto-flow: column;
+  justify-content: start;
+  column-gap: 2.5rem;
 }
 
 .social-links li {
