@@ -8,6 +8,6 @@ description: Projects by stovenly.
 <h1>Projects</h1>
 <ul class="listing-list">
   {% for project in collections.projects | reverse %}
-    {{ listingItem(project.url, project.data.title, project.data.year, null, project.data.blurb) }}
+    {{ listingItem(project.url, project.data.title, project.data.type + " · " + project.data.year, project.data.blurb) }}
   {% endfor %}
 </ul>

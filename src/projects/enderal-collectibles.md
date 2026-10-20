@@ -4,7 +4,7 @@ layout: project.njk
 permalink: "/projects/{{ page.fileSlug }}/"
 order: 30
 year: 2026
-platform: Browser
+type: Web App
 blurb: "A save-file reader that tracks missing collectibles in Enderal."
 links:
   - label: Try it here

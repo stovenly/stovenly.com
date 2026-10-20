@@ -41,10 +41,10 @@ description: Personal writing & projects.
     <ul class="listing-list">
       {% for story in collections.stories | reverse %}
         {% if loop.index <= 5 %}
-        {{ listingItem(story.url, story.data.title, story.data.year, story.data.wordcount) }}
+        {{ listingItem(story.url, story.data.title, story.data.year + " · " + story.data.wordcount + " words") }}
         {% endif %}
       {% endfor %}
-      <li class="view-all-item"><a href="/stories/">View all stories &rarr;</a></li>
+      <li class="view-all-item"><a href="/writing/">View all stories &rarr;</a></li>
     </ul>
   </section>
 
@@ -56,7 +56,7 @@ description: Personal writing & projects.
         {{ listingItem(poem.url, poem.data.title, poem.data.year) }}
         {% endif %}
       {% endfor %}
-      <li class="view-all-item"><a href="/poems/">View all poems &rarr;</a></li>
+      <li class="view-all-item"><a href="/writing/">View all poems &rarr;</a></li>
     </ul>
   </section>
 </div>

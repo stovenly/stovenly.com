@@ -5,7 +5,7 @@ description: A project.
 ---
 <article class="game">
   <h1>{{ title }}</h1>
-  <span class="subtext">{{ year }}{% if platform %} &middot; {{ platform }}{% endif %}</span>
+  <span class="subtext">{{ type }} &middot; {{ year }}</span>
   {% if links %}
   <ul class="game-links">
     {% for link in links %}

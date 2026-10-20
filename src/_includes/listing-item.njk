@@ -1,7 +1,7 @@
-{% macro listingItem(url, title, year, wordcount, blurb) %}
+{% macro listingItem(url, title, subtext, blurb) %}
 <li>
   <a href="{{ url }}">{{ title }}</a>
-  <span class="subtext">{{ year }}{% if wordcount %} &middot; {{ wordcount }} words{% endif %}</span>
+  <span class="subtext">{{ subtext }}</span>
   {% if blurb %}<p class="listing-blurb">{{ blurb }}</p>{% endif %}
 </li>
 {% endmacro %}

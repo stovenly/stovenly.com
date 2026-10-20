@@ -4,7 +4,7 @@ layout: project.njk
 permalink: "/projects/{{ page.fileSlug }}/"
 order: 10
 year: 2026
-platform: Browser
+type: Web App
 blurb: "A save-file reader that tracks missing collectibles in Nehrim."
 links:
   - label: Try it here

@@ -10,8 +10,8 @@ Personal creative writing portfolio (poetry & short fiction) at **stovenly.com**
 - **Styling**: Single plain CSS file (no framework, no preprocessor)
 - **Hosting**: GitHub Pages from the `docs/` directory
 - **Minimal JavaScript** on the front end: an inline theme resolver (must run
-  before first paint), the header menu controller, and the game media viewer
-  (game pages only). Nothing else.
+  before first paint), the header menu controller, and the project media viewer
+  (project pages only). Nothing else.
 
 ## Project Structure
 
@@ -21,20 +21,20 @@ src/                        # All source files
     base.njk                #   Main HTML shell (header, nav, footer)
     poem.njk                #   Poem article layout (extends base)
     story.njk               #   Story article layout with word count (extends base)
-    game.njk                #   Game page layout: links row, body, media grid (extends base)
-    gallery-viewer.njk      #   Full-screen media viewer <dialog> + script, included by game.njk
-    listing-item.njk        #   Reusable macro for listing items (used by index, poems, stories)
-  poems/                    # Poem markdown files
+    project.njk             #   Project page layout: links row, body, media grid (extends base)
+    gallery-viewer.njk      #   Full-screen media viewer <dialog> + script, included by project.njk
+    listing-item.njk        #   Reusable macro for listing items (used by index, writing, projects)
+  poems/                    # Poem markdown files (+ poems.11tydata.json: type "Poem")
   stories/                  # Story markdown files
-  games/                    # Game markdown files
+  projects/                 # Project markdown files
   index.njk                 # Homepage
-  poems.njk                 # Poems listing page
-  stories.njk               # Stories listing page
-  games.njk                 # Games listing page
+  writing.njk               # Writing listing page: poems and stories together
+  projects.njk              # Projects listing page
+  redirects.njk             # Meta-refresh pages for retired URLs (/poems/, /stories/, /games/…)
   404.njk                   # Error page
 static/                     # Passthrough static assets (copied to output root)
   css/style.css             #   Single stylesheet
-  img/games/<slug>/         #   Game screenshots and recordings
+  img/projects/<slug>/      #   Project screenshots and recordings
   favicon.ico
   CNAME                     #   GitHub Pages custom domain (stovenly.com)
 util/
@@ -49,10 +49,14 @@ docs/                       # Generated output (committed to repo, served by Git
 - **Input dir**: `src/` — **Output dir**: `docs/`
 - **Markdown-it** with `html: true`, `breaks: true`, `linkify: true`
 - **Passthrough copy**: `static/` → output root
-- **Three collections**, all sorted by `order` front matter field:
+- **Collections**, sorted by `order` front matter field:
   - `poems` — all `src/poems/*.md`
   - `stories` — all `src/stories/*.md`
-  - `games` — all `src/games/*.md`
+  - `projects` — all `src/projects/*.md`
+  - `writing` — poems + stories, sorted by `year`, then `order`. `order` is the
+    tiebreak within a year across both types, so poem and story values interleave.
+- **`writingType` filter**: a story's type is `Vignette` under 1000 words, else
+  `Short Story`; a `type` in front matter overrides it. Poems get `Poem`.
 
 ## Content Front Matter
 
@@ -73,13 +77,13 @@ permalink: "/stories/{{ page.fileSlug }}/"
 wordcount: 1200    # Displayed on the page
 order: 10
 year: 2014         # Year written — displayed as "year · wordcount words"
-blurb: "..."       # One-sentence teaser shown under the story on /stories (see Story Blurbs)
+blurb: "..."       # One-sentence teaser shown under the story on /writing (see Story Blurbs)
 ```
 
 ## Story Blurbs
 
 Each story has a `blurb` in its front matter: a very short teaser shown under the
-title on the `/stories` listing only (not the homepage, not on the story page). It's
+title on the `/writing` listing only (not the homepage, not on the story page). It's
 styled small and muted (`.listing-blurb`).
 
 A blurb is a teaser, not a summary. It introduces the *setup* and makes the reader
@@ -116,35 +120,35 @@ Hard rules (these come from direct author feedback — follow them):
   spoils.
 
 
-**Games** (`src/games/*.md`):
+**Projects** (`src/projects/*.md`):
 ```yaml
-title: "Game Title"
-layout: game.njk
-permalink: "/games/{{ page.fileSlug }}/"
+title: "Project Title"
+layout: project.njk
+permalink: "/projects/{{ page.fileSlug }}/"
 order: 10
 year: 2024
-platform: "Browser"          # Optional — shown as "year · platform"
-blurb: "..."                 # One-liner shown on /games (see Game Blurbs)
+type: Web App                # Shown as "type · year" on the page and on /projects
+blurb: "..."                 # One-liner shown on /projects (see Project Blurbs)
 links:                       # Optional — rendered as a pill row above the body
   - label: Play
     url: https://...
 media:                       # Optional — thumbnail grid below the body, in this order
-  - video: recording.webm    # Files live at static/img/games/<slug>/
+  - video: recording.webm    # Files live at static/img/projects/<slug>/
   - image: screenshot1.png
 ```
 
-Body markdown is the game's long-form info (what it is, features, credits).
-Games link out only — no in-page embeds, no thumbnails on the listing, and no
+Body markdown is the project's long-form info (what it is, features, credits).
+Projects link out only — no in-page embeds, no thumbnails on the listing, and no
 homepage section. Media carry no alt text or captions.
 
 Clicking a `media` thumbnail opens `gallery-viewer.njk`: a full-screen `<dialog>`
-with prev/next, arrow keys, and inline video playback. `game.njk` includes it
+with prev/next, arrow keys, and inline video playback. `project.njk` includes it
 only when `media` is set. It hooks on ids only.
 
-## Game Blurbs
+## Project Blurbs
 
-The story blurb rules above do **not** apply to games. A game blurb should say
-plainly what the game is — genre, hook, one distinguishing thing — in one short
+The story blurb rules above do **not** apply to projects. A project blurb should say
+plainly what the project is — genre, hook, one distinguishing thing — in one short
 sentence. Spoilers aren't a concern; being informative is the point.
 
 ## Build & Deploy
@@ -209,5 +213,5 @@ Notes:
 - **Order field**: use increments of 10 (10, 20, 30…) so new items can be inserted between existing ones without renumbering
 - **Homepage** shows the 5 most recent poems and stories (reversed collection order)
 - **Index pages** show all items in reverse order (newest first)
-- **Listing item macro** (`listing-item.njk`): all listing pages import and use the `listingItem(url, title, year, wordcount, blurb)` macro — poems pass only `url, title, year`; the `/stories` page also passes `wordcount` and `blurb`; the homepage passes `wordcount` but omits `blurb`
+- **Listing item macro** (`listing-item.njk`): `listingItem(url, title, subtext, blurb)`. `/writing` and `/projects` pass `"type · year"` and the blurb (poems have none); the homepage passes `"year · N words"` for stories and the year for poems, with no blurb
 - Always rebuild `docs/` after source changes before committing

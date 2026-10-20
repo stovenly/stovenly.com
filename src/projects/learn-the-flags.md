@@ -4,7 +4,7 @@ layout: project.njk
 permalink: "/projects/{{ page.fileSlug }}/"
 order: 20
 year: 2026
-platform: Browser
+type: Web App
 blurb: "A spaced-repetition trainer for memorizing every flag in the world."
 links:
   - label: Try it here

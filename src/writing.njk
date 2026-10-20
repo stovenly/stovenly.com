@@ -1,0 +1,13 @@
+---
+title: Writing
+layout: base.njk
+permalink: /writing/
+description: Poems and short stories by stovenly.
+---
+{% from "listing-item.njk" import listingItem %}
+<h1>Writing</h1>
+<ul class="listing-list">
+  {% for item in collections.writing | reverse %}
+    {{ listingItem(item.url, item.data.title, (item.data | writingType) + " · " + item.data.year, item.data.blurb) }}
+  {% endfor %}
+</ul>

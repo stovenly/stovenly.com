@@ -14,10 +14,18 @@ module.exports = function(eleventyConfig) {
     eleventyConfig.addPassthroughCopy({"static": "."});
   
     const byOrder = (a, b) => (a.data.order || 0) - (b.data.order || 0);
-    for (const name of ["poems", "stories", "games", "projects"]) {
+    for (const name of ["poems", "stories", "projects"]) {
         eleventyConfig.addCollection(name, (collectionApi) =>
             collectionApi.getFilteredByGlob(`src/${name}/*.md`).sort(byOrder));
     }
+
+    eleventyConfig.addFilter("writingType", (data) =>
+        data.type || (data.wordcount < 1000 ? "Vignette" : "Short Story"));
+
+    const byYearThenOrder = (a, b) => (a.data.year - b.data.year) || byOrder(a, b);
+    eleventyConfig.addCollection("writing", (collectionApi) =>
+        collectionApi.getFilteredByGlob(["src/poems/*.md", "src/stories/*.md"])
+            .sort(byYearThenOrder));
 
     // Minify/obfuscate the built output. Skipped during --serve/--watch so the
     // dev output stays readable in devtools.

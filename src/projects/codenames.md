@@ -1,10 +1,10 @@
 ---
 title: Codenames
-layout: game.njk
-permalink: "/games/{{ page.fileSlug }}/"
-order: 10
+layout: project.njk
+permalink: "/projects/{{ page.fileSlug }}/"
+order: 5
 year: 2026
-platform: Browser
+type: Web App
 blurb: "A browser version of the board game Codenames."
 links:
   - label: Play here
