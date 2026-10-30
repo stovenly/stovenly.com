@@ -49,4 +49,4 @@ A browser version of the board game Codenames.
 
 ## Disclosure
 
-AI coding assistants were used to accelerate the implementation of this game.
+AI coding assistants were used to accelerate the implementation.

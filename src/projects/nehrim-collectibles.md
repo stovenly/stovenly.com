@@ -28,4 +28,4 @@ A browser tool that reads a Nehrim save and shows which collectibles are still m
 
 ## Disclosure
 
-AI coding assistants were used to accelerate the implementation of this project.
+AI coding assistants were used to accelerate the implementation.

@@ -37,4 +37,4 @@ A browser app for memorizing the flags of the world.
 
 ## Disclosure
 
-AI coding assistants were used to accelerate the implementation of this project.
+AI coding assistants were used to accelerate the implementation.
